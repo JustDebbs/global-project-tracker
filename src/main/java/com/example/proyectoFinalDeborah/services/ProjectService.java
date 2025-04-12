@@ -13,8 +13,8 @@ public class ProjectService {
     @Autowired //Instanciar directamente la clase
     private ProjectRepo projectRepo;
 
-    public List<Project> findByUserId(Long userId) {
-        return projectRepo.findByUserId(userId);
+    public List<Project> findByUserId(Long idManger) {
+        return projectRepo.findByIdManager(idManger);
     }
 
 
