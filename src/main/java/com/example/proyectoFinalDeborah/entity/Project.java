@@ -1,7 +1,9 @@
 package com.example.proyectoFinalDeborah.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Getter;
+
+import java.util.Date;
 
 @Entity
 @Table(name="Project")
@@ -10,86 +12,108 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Getter
-    @Column(nullable = false)
-    private String departamento;
+    @Column(name = "department")
+    private String department;
 
-    @Column(nullable = false)
-    private String geografia;
+    @Column(name = "description")
+    private String description;
 
-    @Column(nullable = false)
-    private String fechaInicio;
+    @Column(name = "geography")
+    private String geography;
 
-    @Column(nullable = false)
-    private String fechaExigida;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Column(name = "startDate")
+    private Date startDate;
 
-    @Column(nullable = false)
-    private long idManager;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Column(name = "endDate")
+    private Date endDate;
 
-    public Project(){
+    @Column(name = "idManager")
+    private Long idManager;
+
+    // Constructor sin argumentos
+    public Project() {
     }
 
-    public Project (String name, String departamento, String geografía, String fechaInicio, String fechaExigida, long idManager){
+    // Constructor con todos los argumentos
+    public Project(long id, String name, String department, String description, String geography, Date startDate, Date endDate, Long idManager) {
+        this.id = id;
         this.name = name;
-        this.departamento = departamento;
-        this.geografia = geografia;
-        this.fechaInicio = fechaInicio;
-        this.fechaExigida = fechaExigida;
+        this.department = department;
+        this.description = description;
+        this.geography = geography;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.idManager = idManager;
+    }
+
+    // Getters
+    public long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGeography() {
+        return geography;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public Long getIdManager() {
+        return idManager;
+    }
+
+    // Setters
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getDepartamento() {
-        return departamento;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getGeografia() {
-        return geografia;
+    public void setGeography(String geography) {
+        this.geography = geography;
     }
 
-    public void setGeografia(String geografia) {
-        this.geografia = geografia;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public String getFechaInicio() {
-        return fechaInicio;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public String getFechaExigida() {
-        return fechaExigida;
-    }
-
-    public void setFechaExigida(String fechaExigida) {
-        this.fechaExigida = fechaExigida;
-    }
-
-
-    public long getIdManager() {
-        return idManager;
-    }
-
-    public void setIdManager(long idManager) {
+    public void setIdManager(Long idManager) {
         this.idManager = idManager;
     }
 }
-
-
